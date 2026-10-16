@@ -9,3 +9,6 @@ __pycache__/
 # Local test materials and execution records
 /test/
 /tests/
+
+# Local development instructions
+/AGENTS.md

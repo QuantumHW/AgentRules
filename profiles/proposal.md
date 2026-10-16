@@ -6,6 +6,7 @@
 
 - [core](../rules/core.md)、[factual-integrity](../rules/factual-integrity.md)、[scope-control](../rules/scope-control.md)。
 - [concise-writing](../rules/concise-writing.md)、[technical-accuracy](../rules/technical-accuracy.md)。
+- [current-deliverable](../rules/current-deliverable.md)；已有阶段或变更记录要求时补选 [change-traceability](../rules/change-traceability.md)。
 - 任务确含系统方案设计且存在扩展冲动时，补选 [anti-overengineering](../rules/anti-overengineering.md)；不引入软件错误处理要求。
 
 ## 场景补充

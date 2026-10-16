@@ -2,7 +2,6 @@
 
 <div align="center">
   <img src="assets/logo.png" width="200" alt="AgentRules Logo">
-  <h1>AgentRules</h1>
   <p><strong>Quickly create a tailored AGENTS.md for your project.</strong></p>
   <p>Reusable Rules. Project-Specific Instructions.</p>
 
@@ -48,12 +47,17 @@ The agent reads relevant project descriptions, directories, dependency configura
 | General documentation | Accurate content, concise wording, clear structure, consistent terminology |
 | Academic papers | Academic expression, verifiable references, consistency between experimental data and conclusions |
 | Project proposals | Follow templates, connect technical plans with targets, preserve truthful prior work and outcomes |
+| Personal notes and knowledge bases | Deduplicate and connect knowledge, maintain properties and tags, archive formal notes, respect authorization and recoverable deletion |
 
 A project can combine multiple contexts. When code, a paper, and a guide coexist, their instructions distinguish code verification, research evidence, and document writing while merging shared constraints.
 
 ### Preserve existing project instructions
 
 An existing `AGENTS.md` is read in full first. When you explicitly request an update, the workflow preserves valid handwritten rules and project-specific information while integrating applicable instructions. Substantive conflicts that cannot be resolved safely require your decision. A generation request without update authorization produces a candidate or diff rather than overwriting the file.
+
+### Present the current deliverable directly
+
+Keep official names and current content in titles, filenames, interfaces, and document bodies. Edits should not introduce labels such as “simplified edition” or “version without X,” or leave statements announcing deleted content. Confirmed product categories, user-specified names, real capability limits, and explicitly requested change records are handled according to their purpose.
 
 ### Refine rules in natural language
 
@@ -133,7 +137,15 @@ For a proposal with an existing Word template and supporting materials:
 
 Instructions focus on the template, supporting evidence, and consistency between research tasks and assessment targets. Generating instructions does not itself modify the proposal.
 
-For a mixed project, add “cover the source code, paper, and user guide, distinguishing their scopes.” See the [software example](examples/software/AGENTS.md) and [proposal example](examples/proposal/AGENTS.md); both explicitly use fictional demonstration settings.
+### Personal notes and knowledge bases
+
+For Obsidian or another collection of Markdown notes maintained over time:
+
+> Use AgentRules to generate AGENTS.md for this knowledge base. Preserve existing viewpoints and technical details, avoid duplicate notes, follow existing property, tag, and link conventions, distinguish formal notes from working records, and define authorization boundaries for bulk organization and recoverable deletion.
+
+Instructions reflect the knowledge base's actual conventions. Fixed fields, omission of level-one headings, and particular workspace paths are not imposed on other projects. Generating instructions does not itself modify the notes.
+
+For a mixed project, add “cover the source code, paper, and user guide, distinguishing their scopes.” See the [software example](examples/software/AGENTS.md), [proposal example](examples/proposal/AGENTS.md), and [knowledge-base example](examples/knowledge-base/AGENTS.md); all explicitly use fictional demonstration settings.
 
 ## Keep Improving Your Rule Library
 
