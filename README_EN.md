@@ -6,7 +6,7 @@
   <p>Reusable Rules. Project-Specific Instructions.</p>
 
   <p>
-    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.0.0-1677FF?style=flat-square" alt="Version 1.0.0"></a>
+    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.1.0-1677FF?style=flat-square" alt="Version 1.1.0"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="MIT License"></a>
   </p>
   <p><a href="#quick-start">Quick Start</a> · <a href="#use-cases">Use Cases</a> · <a href="#how-it-works">How It Works</a> · <a href="#customize">Refine Rules</a></p>
@@ -86,7 +86,7 @@ See the [official OpenAI Skill documentation](https://learn.chatgpt.com/docs/bui
 | **Software development** | Appropriate design, error handling, scope control, code verification |
 | **General documentation** | Accurate content, concise writing, consistent structure and terminology |
 | **Academic papers** | Verifiable references, authentic experimental data, supported conclusions |
-| **Project proposals** | Template requirements, plans aligned with targets, truthful prior work and outcomes |
+| **Project proposals** | Template and layout preservation, source verification, aligned tasks, metrics, and outcomes |
 | **Personal notes and knowledge bases** | Deduplication and links, properties and tags, archiving and recoverable deletion |
 
 A project can combine multiple contexts. Code, a paper, and a guide can have separate requirements while sharing common constraints.
@@ -154,6 +154,20 @@ Maintain relevant Profile references and avoid duplication.
 ```
 
 This changes your local rule library. It does not publish upstream or update existing project instructions automatically. To apply new rules, explicitly request a merged update to the target project's `AGENTS.md`.
+
+You can also supply instructions from an earlier project as source material:
+
+```text
+Read this earlier project's AGENTS.md and integrate reusable requirements into AgentRules.
+Compare existing Rules and Profiles, merge overlapping content, and maintain references.
+Separate general behaviors, template requirements, and project-specific choices.
+Do not turn its section numbers, organizations, metric values, duration, or paths
+into universal constraints.
+```
+
+Proposal work can select [template and layout preservation](rules/template-preservation.md) and [research validation](rules/research-validation.md) as needed, with the [proposal Profile](profiles/proposal.md) organizing section responsibilities and delivery checks.
+
+**This project's version** is defined in `VERSION`. Rules, Profiles, and Skills are product content: corrections that preserve existing usage increment PATCH; new rules, contexts, or generation capabilities increment MINOR; changes that break existing usage require a MAJOR assessment. Product maintenance includes synchronizing the version and both README badges. Continued work toward the same target version does not increment it again; auxiliary explanations and formatting alone do not trigger an increment. Updating a version and publishing it are separate actions.
 
 ## Usage Notes
 

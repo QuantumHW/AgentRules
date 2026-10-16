@@ -7,6 +7,8 @@
 - [core](../rules/core.md)、[factual-integrity](../rules/factual-integrity.md)、[scope-control](../rules/scope-control.md)。
 - [concise-writing](../rules/concise-writing.md)、[technical-accuracy](../rules/technical-accuracy.md)。
 - [current-deliverable](../rules/current-deliverable.md)；已有进度、提交或变更记录要求时补选 [change-traceability](../rules/change-traceability.md)。
+- 固定模板或有明确版面要求的格式文件，补选 [template-preservation](../rules/template-preservation.md)。
+- 项目以规则、Skill 或文档资源包为版本化产品，或明确要求维护内容版本时，补选 [version-management](../rules/version-management.md)；普通文稿不自动引入产品版本。
 
 ## 场景补充
 

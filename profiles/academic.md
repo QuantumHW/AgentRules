@@ -7,6 +7,7 @@
 - [core](../rules/core.md)、[factual-integrity](../rules/factual-integrity.md)、[scope-control](../rules/scope-control.md)。
 - [concise-writing](../rules/concise-writing.md)、[technical-accuracy](../rules/technical-accuracy.md)。
 - [current-deliverable](../rules/current-deliverable.md)；已有阶段或提交记录要求时补选 [change-traceability](../rules/change-traceability.md)。
+- 涉及数据建设、实验比较或机制论证时，补选 [research-validation](../rules/research-validation.md)；模板和格式文件按需补选 [template-preservation](../rules/template-preservation.md)。
 
 ## 场景补充
 

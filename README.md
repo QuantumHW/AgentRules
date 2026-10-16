@@ -6,7 +6,7 @@
   <p>Reusable Rules. Project-Specific Instructions.</p>
 
   <p>
-    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.0.0-1677FF?style=flat-square" alt="Version 1.0.0"></a>
+    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.1.0-1677FF?style=flat-square" alt="Version 1.1.0"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="MIT License"></a>
   </p>
   <p><a href="#quick-start">快速开始</a> · <a href="#use-cases">适用场景</a> · <a href="#how-it-works">工作方式</a> · <a href="#customize">完善规则</a></p>
@@ -85,7 +85,7 @@ $generate-agents 为当前项目生成 AGENTS.md，以现有资料为依据。
 | **软件开发** | 设计适度、异常处理、修改范围、代码验证 |
 | **通用文档** | 内容准确、表达精练、结构与术语一致 |
 | **科研论文** | 引用可核验、实验数据真实、结论有依据 |
-| **项目申报书** | 遵循模板、技术路线与指标对应、成果真实 |
+| **项目申报书** | 模板与版面保护、来源核验、任务—指标—成果对应 |
 | **个人笔记与知识库** | 去重与关联、属性和标签、归档与可恢复删除 |
 
 一个项目可组合多个场景。例如源码、论文与手册共存时，分别规定各自要求，合并共通约束。
@@ -153,6 +153,19 @@ $generate-agents 为当前项目生成 AGENTS.md，以现有资料为依据。
 ```
 
 这会修改本地规则库，不自动发布到上游，也不更新已有项目的规范。需要应用新规则时，明确请求合并更新目标项目的 `AGENTS.md`。
+
+也可以提供旧项目的规范作为提炼材料：
+
+```text
+请读取这份旧项目 AGENTS.md，把可复用要求整合进 AgentRules。
+先对照已有 Rules 和 Profiles 合并重复内容，维护必要引用；
+区分通用行为、模板要求和原项目选择，
+不把原项目的章节号、单位、指标数值、周期或路径当作通用约束。
+```
+
+申报场景可按需选择 [模板与版面保护](rules/template-preservation.md) 和 [研究验证](rules/research-validation.md)，并通过 [proposal Profile](profiles/proposal.md) 组织章节职责与交付检查。
+
+**本项目版本**以 `VERSION` 为准。Rules、Profiles 和 Skills 是产品内容：保持既有用法的规则修正递增 PATCH，新增规则、场景或生成能力递增 MINOR，破坏既有使用约定时评估 MAJOR。完成实际产品维护时同步版本及中英文徽章，同一目标版本内的继续完善不重复递增；仅改辅助说明或排版不递增。版本更新与发布分别处理。
 
 ## 使用须知
 
