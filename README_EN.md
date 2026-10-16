@@ -9,160 +9,157 @@
     <a href="VERSION"><img src="https://img.shields.io/badge/version-1.0.0-1677FF?style=flat-square" alt="Version 1.0.0"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="MIT License"></a>
   </p>
+  <p><a href="#quick-start">Quick Start</a> · <a href="#use-cases">Use Cases</a> · <a href="#how-it-works">How It Works</a> · <a href="#customize">Refine Rules</a></p>
 </div>
 
 ---
 
-AgentRules is a lightweight, project-aware scaffolding system for `AGENTS.md`. Using reusable behavior rules and the `generate-agents` Skill, it examines existing project materials and requirements to create clear, ready-to-use AI working instructions that you can refine, reducing repeated prompt writing across projects.
+AgentRules combines reusable behavior rules with your project's existing materials and requirements to generate a ready-to-use `AGENTS.md`. It covers software development, documentation, academic papers, project proposals, and personal knowledge bases.
 
-The rules and generated instructions are intended for any agent that can read and follow `AGENTS.md`. Skill installation, discovery, and invocation depend on the tool you use.
+**Turn recurring requests into project instructions, instead of rewriting the same prompts for every task.**
 
-## Why AgentRules?
-
-`AGENTS.md` gives supporting agents project-level guidance, including conventions, change boundaries, and verification requirements. Writing it from scratch for every project often means addressing the same problems:
-
-- **Unjustified defensive code**: Broad exception handling, silent fallbacks, or repeated validation for unsubstantiated failure scenarios.
-- **Overengineering**: Unrequested abstractions, configuration options, and features that complicate a simple task.
-- **Redundant writing**: Process narration, self-justification, and boilerplate that add little information.
-- **Fabricated content**: Invented technical details, references, or experimental data, and unverified assumptions presented as facts.
-- **Scope creep**: Unrelated file changes and task expansion beyond the original request.
-
-AgentRules turns these recurring issues into reusable rules, selecting and organizing instructions based on project evidence. Necessary error handling, security checks, technical conditions, and real risks remain part of the work.
-
-**Start with instructions tailored to your project, without writing everything from scratch or copying a fixed template.**
-
-## Key Features
-
-### Instructions based on project context
-
-The agent reads relevant project descriptions, directories, dependency configuration, existing instructions, and task materials, then selects rules and resolves duplication and conflicts. Only confirmed technologies, paths, and commands belong in the output. When information is sparse, the workflow produces supported baseline instructions rather than inventing an architecture.
-
-**Rules** organize behavior topics, **Profiles** combine project contexts, and the **Skill** guides analysis, selection, and generation. You do not need to pick and concatenate rule files yourself.
-
-### Multiple project contexts
-
-| Project type | Main focus |
-| --- | --- |
-| Software development | Avoid overengineering, handle errors appropriately, control scope, verify code behavior |
-| General documentation | Accurate content, concise wording, clear structure, consistent terminology |
-| Academic papers | Academic expression, verifiable references, consistency between experimental data and conclusions |
-| Project proposals | Follow templates, connect technical plans with targets, preserve truthful prior work and outcomes |
-| Personal notes and knowledge bases | Deduplicate and connect knowledge, maintain properties and tags, archive formal notes, respect authorization and recoverable deletion |
-
-A project can combine multiple contexts. When code, a paper, and a guide coexist, their instructions distinguish code verification, research evidence, and document writing while merging shared constraints.
-
-### Preserve existing project instructions
-
-An existing `AGENTS.md` is read in full first. When you explicitly request an update, the workflow preserves valid handwritten rules and project-specific information while integrating applicable instructions. Substantive conflicts that cannot be resolved safely require your decision. A generation request without update authorization produces a candidate or diff rather than overwriting the file.
-
-### Present the current deliverable directly
-
-Keep official names and current content in titles, filenames, interfaces, and document bodies. Edits should not introduce labels such as “simplified edition” or “version without X,” or leave statements announcing deleted content. Confirmed product categories, user-specified names, real capability limits, and explicitly requested change records are handled according to their purpose.
-
-### Refine rules in natural language
-
-In your local AgentRules repository, describe a problem and the behavior you want to an agent following the repository's maintenance instructions. You can request a merged change or a new rule without learning a configuration language. See “Keep improving your rule library” below.
+<a id="quick-start"></a>
 
 ## Quick Start
 
-### 1. Install
+### 1 · Ask your agent to install
 
-In your agent application, open a session with network access and local file permissions and send:
-
-```text
-Install AgentRules from https://github.com/QuantumHW/AgentRules so I can use it across projects with this agent.
-
-Keep the complete repository in a persistent local directory, preserving the relative layout of skills/generate-agents, rules/, and profiles/. Do not copy only SKILL.md.
-If this agent supports Agent Skills, register generate-agents using its supported mechanism. Otherwise, provide the local SKILL.md path and explain how to ask this agent to read and follow the workflow directly.
-If an installation with the same name already exists, check whether it can be reused rather than overwriting it. Check that the entry point and rule resources are readable, then report the installation location, available invocation method, and actual check results.
-```
-
-The agent handles downloading, configuration, and checks; you do not need to clone the repository or run commands manually. Keep the complete repository in place so resource references remain valid. If the workflow is not registered as a Skill, include the local SKILL.md path returned during installation in subsequent requests and ask the agent to read and follow it.
-
-For example, Codex can discover a symlink from `~/.agents/skills/generate-agents` to the repository's `skills/generate-agents` directory; see the [official OpenAI Skill documentation](https://learn.chatgpt.com/docs/build-skills). Other agents use their own configuration mechanisms. Installation and loading require separate verification for each platform.
-
-### 2. Generate AGENTS.md for a project
-
-Open your target project in your agent application, provide any existing README, requirements, source code, templates, or other relevant materials, and enter:
+In an agent session with network access and local file permissions, copy and send:
 
 ```text
-Use AgentRules to analyze this project and generate a suitable AGENTS.md.
+Install AgentRules for this agent:
+https://github.com/QuantumHW/AgentRules
+
+Keep the complete repository in a persistent local directory.
+Preserve the relative layout of skills/generate-agents, rules/, and profiles/.
+Do not copy only SKILL.md or overwrite an existing installation.
+
+If Agent Skills are supported, register generate-agents using this tool's mechanism.
+Otherwise, provide the local SKILL.md path and how to invoke it by reading it directly.
+Check that the entry point and rule resources are readable.
+Report the installation location and actual check results.
 ```
 
-Tools that support explicit Skill invocation can use their own syntax. For example, in Codex:
+The agent handles downloading, configuration, and checks; you do not need to run commands manually. Keep the complete repository in place so resource references remain valid.
+
+### 2 · Generate instructions in your project
+
+Open your project, provide any existing README, requirements, code, templates, or notes, and send:
+
+```text
+Use AgentRules to analyze this project
+and generate a suitable AGENTS.md.
+```
+
+Review the project facts, scope, and verification requirements before using the file for subsequent tasks. With limited information, the workflow produces supported baseline instructions rather than inventing a technology stack or commands.
+
+### 3 · Refine in natural language
+
+```text
+Use AgentRules to update the current AGENTS.md.
+Preserve handwritten commands and valid project constraints, and merge this request:
+This is a research prototype with no legacy compatibility requirements.
+Simplify those constraints while keeping necessary correctness and security rules.
+```
+
+> **Already have AGENTS.md?** A generation request produces a candidate or diff without overwriting it. Explicit update requests authorize merging; substantive conflicts that cannot be resolved safely require your decision.
+
+<details>
+<summary>Codex installation and invocation example</summary>
+
+Codex can discover a symlink from `~/.agents/skills/generate-agents` to the repository's `skills/generate-agents` directory. It also supports explicit invocation:
 
 ```text
 $generate-agents Generate AGENTS.md for this project based on its existing materials.
 ```
 
-The agent follows the workflow to analyze materials, select contexts, and generate instructions. Review the project facts, working boundaries, and verification requirements before using them for subsequent tasks. Empty directories also work, but the Skill will not invent a technology stack or test commands.
+See the [official OpenAI Skill documentation](https://learn.chatgpt.com/docs/build-skills) for loading details. Other agents use their own mechanisms. Without automatic Skill discovery, include the local `SKILL.md` path returned during installation and ask the agent to read and follow it.
 
-### 3. Adjust as needed
+</details>
 
-Continue with natural-language requests specific to the current project, for example:
+<a id="use-cases"></a>
 
-> Update the current AGENTS.md: this project is a research prototype with no legacy compatibility requirements. Simplify those constraints while preserving necessary correctness and security requirements.
+## Use Cases
 
-> Update the current AGENTS.md: this is a formal technical documentation project. Emphasize evidence for technical metrics and remove unnecessary process narration and defensive wording.
+| Your work | Main focus |
+| --- | --- |
+| **Software development** | Appropriate design, error handling, scope control, code verification |
+| **General documentation** | Accurate content, concise writing, consistent structure and terminology |
+| **Academic papers** | Verifiable references, authentic experimental data, supported conclusions |
+| **Project proposals** | Template requirements, plans aligned with targets, truthful prior work and outcomes |
+| **Personal notes and knowledge bases** | Deduplication and links, properties and tags, archiving and recoverable deletion |
 
-To merge updates into an existing file, request this explicitly:
+A project can combine multiple contexts. Code, a paper, and a guide can have separate requirements while sharing common constraints.
 
-```text
-Use AgentRules to update the current AGENTS.md, preserving handwritten commands and project constraints while merging applicable rules.
-```
+<details>
+<summary>Copy a request for your context</summary>
 
-## Usage Examples
-
-### Software development
-
-For a Python web service, constrain implementation and change scope:
+**Software development**
 
 > Use AgentRules to generate AGENTS.md for this project. Focus on avoiding overengineering, unnecessary exception handling, and feature expansion beyond the requirements.
 
-Instructions should reflect existing architecture, interfaces, and test entry points. The label “Python web service” alone does not justify inventing a database, directory layout, or deployment workflow.
+**General documentation**
 
-### Academic papers
+> Use AgentRules to generate AGENTS.md for this documentation project. Preserve existing structure and writing style, use consistent terminology, require evidence for technical metrics, and remove process narration that adds no information.
 
-For a paper project, express research precisely and concisely:
+**Academic papers**
 
-> Use AgentRules to generate AGENTS.md for this paper project. Require verifiable sources for data and citations, consistency between experimental results and conclusions, and precise, concise academic writing that retains necessary conditions and limitations.
+> Use AgentRules to generate AGENTS.md for this paper project. Require verifiable data and citations, consistency between results and conclusions, and precise, concise writing that retains necessary conditions and limitations.
 
-Instructions focus on research evidence and contribution claims. Planned experiments must not become reported results, and passing code tests does not establish a paper's conclusions.
+**Project proposals**
 
-### Project proposals
+> Use AgentRules to generate AGENTS.md for this proposal project. Follow the existing template and supporting materials, do not invent research outcomes or technical targets, and keep research tasks aligned with assessment targets.
 
-For a proposal with an existing Word template and supporting materials:
+**Personal notes and knowledge bases**
 
-> Use AgentRules to generate AGENTS.md for this proposal project. Follow the existing template and supporting materials, do not invent research outcomes or technical targets, and avoid redundant writing, process narration, and self-justification.
+> Use AgentRules to generate AGENTS.md for this knowledge base. Preserve existing viewpoints and technical details, avoid duplicate notes, follow property, tag, and link conventions, distinguish formal notes from working records, and define authorization boundaries for bulk organization and recoverable deletion.
 
-Instructions focus on the template, supporting evidence, and consistency between research tasks and assessment targets. Generating instructions does not itself modify the proposal.
+Knowledge-base fields, heading levels, and paths come from actual project conventions. For a mixed project, add: “Cover the source code, paper, and user guide, distinguishing their scopes.”
 
-### Personal notes and knowledge bases
+</details>
 
-For Obsidian or another collection of Markdown notes maintained over time:
+Example outputs: [software project](examples/software/AGENTS.md) · [project proposal](examples/proposal/AGENTS.md) · [personal knowledge base](examples/knowledge-base/AGENTS.md). These use fictional demonstration settings, not your project's configuration.
 
-> Use AgentRules to generate AGENTS.md for this knowledge base. Preserve existing viewpoints and technical details, avoid duplicate notes, follow existing property, tag, and link conventions, distinguish formal notes from working records, and define authorization boundaries for bulk organization and recoverable deletion.
+<a id="how-it-works"></a>
 
-Instructions reflect the knowledge base's actual conventions. Fixed fields, omission of level-one headings, and particular workspace paths are not imposed on other projects. Generating instructions does not itself modify the notes.
+## How It Works
 
-For a mixed project, add “cover the source code, paper, and user guide, distinguishing their scopes.” See the [software example](examples/software/AGENTS.md), [proposal example](examples/proposal/AGENTS.md), and [knowledge-base example](examples/knowledge-base/AGENTS.md); all explicitly use fictional demonstration settings.
+1. **Analyze the project**: Read relevant descriptions, configuration, existing instructions, and task materials to establish the actual context.
+2. **Combine rules**: Select behavior Rules and context Profiles, resolving duplication, conflicts, and irrelevant constraints.
+3. **Generate instructions**: The `generate-agents` Skill organizes a project-specific `AGENTS.md` and checks facts, scope, and consistency.
 
-## Keep Improving Your Rule Library
+The instructions address recurring problems:
 
-Project-specific requirements can be reflected directly in the target project's `AGENTS.md`. For preferences you want to reuse across projects, open the local AgentRules repository created during installation and ask your agent:
+- **Overengineering and unjustified defensive code**: Avoid abstractions, compatibility layers, and repeated checks for hypothetical needs; retain handling required at real error boundaries.
+- **Fabrication and redundancy**: Do not invent capabilities, data, or references, or present assumptions as facts. Remove empty boilerplate and self-justification.
+- **Editing history inside deliverables**: Keep official names and current content, without adding labels such as “simplified edition” or statements announcing deletions.
+- **Scope creep**: Preserve valid project instructions and user changes instead of rewriting unrelated content during a task.
 
-> Refine the general documentation rules: when editing an existing document, preserve its structure and writing style unless explicitly asked to restructure the entire document. Check existing rules first to avoid duplication.
+The output guides later work; generating it does not itself develop software, edit proposals, or organize real notes. Confirmed product categories, user-specified names, capability limits, and explicitly requested historical materials retain their intended roles.
 
-The repository's maintenance instructions require the agent to inspect existing content, decide whether to merge, revise, or add a rule, and maintain the relevant Profile references. Describe the problem and desired outcome; you do not need to edit each rule file manually.
+<a id="customize"></a>
 
-This changes your local rule library. It does not automatically publish changes upstream or synchronize instructions already generated for other projects.
+## Refine Your Rules
+
+**For requirements specific to one project**, ask your agent to update that project's `AGENTS.md`.
+
+**For preferences you want to reuse**, open your local AgentRules repository and ask:
+
+```text
+Refine the general documentation rules:
+When editing an existing document, preserve its structure and writing style.
+Do not restructure the whole document unless the user explicitly requests it.
+Check existing rules first and decide whether to merge, revise, or add a rule.
+Maintain relevant Profile references and avoid duplication.
+```
+
+This changes your local rule library. It does not publish upstream or update existing project instructions automatically. To apply new rules, explicitly request a merged update to the target project's `AGENTS.md`.
 
 ## Usage Notes
 
-- **Review the instructions.** `AGENTS.md` provides ongoing guidance; adherence depends on the agent and its instruction-loading mechanism, rather than being guaranteed.
-- **Use project evidence.** Unconfirmed technical details, test commands, research results, and project background must not be invented. Concision does not justify removing necessary validation or factual qualifications.
-- **Updates are not synchronized automatically.** After changing the local rule library, explicitly request a merged update to each target project's `AGENTS.md` as needed.
-- **Distinguish rules from loading support.** The rules target agents that support `AGENTS.md`. Skill discovery, invocation, and instruction precedence depend on the tool; this does not mean every platform has been verified.
+- **Review before use**: Instructions provide ongoing guidance; adherence depends on the agent and is not guaranteed.
+- **Use project evidence**: Do not invent unknown facts or remove necessary security checks, technical conditions, or factual qualifications for brevity.
+- **Follow the tool's loading mechanism**: Rules target agents that support `AGENTS.md`. Skill discovery, invocation, and instruction precedence depend on the tool and require separate platform verification.
 
 ## License
 
