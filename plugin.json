@@ -24,21 +24,11 @@
         "category": "Productivity",
         "logo": "./assets/icon.png",
         "defaultPrompt": [
-          "使用 AgentRules，为当前项目生成 AGENTS.md。",
-          "Use AgentRules to generate an AGENTS.md for the current project.",
-          "使用 AgentRules，保留有效约束并合并更新当前项目的 AGENTS.md。",
-          "Use AgentRules to merge updates into the current project's AGENTS.md while preserving valid existing instructions.",
-          "使用 AgentRules，根据当前代码库的技术栈、目录结构和开发流程，生成 AGENTS.md。",
-          "Use AgentRules to generate an AGENTS.md based on this codebase's tech stack, directory structure, and development workflow.",
-          "使用 AgentRules，为当前科研项目生成 AGENTS.md，明确实验验证、证据引用和论文写作要求。",
-          "Use AgentRules to generate an AGENTS.md for this research project, covering experiment validation, evidence citation, and paper writing.",
-          "使用 AgentRules，为当前项目申报材料生成 AGENTS.md，明确模板结构、事实来源和可修改范围。",
-          "Use AgentRules to generate an AGENTS.md for these project application materials, covering template structure, factual sources, and editing boundaries.",
-          "使用 AgentRules，为当前文档项目生成 AGENTS.md，明确内容组织、术语一致性和版式要求。",
-          "Use AgentRules to generate an AGENTS.md for this documentation project, covering content organization, consistent terminology, and formatting requirements.",
-          "使用 AgentRules，为当前 Obsidian 知识库生成 AGENTS.md，遵循已有的笔记模板、标签和链接约定。",
-          "Use AgentRules to generate an AGENTS.md for this Obsidian vault, following its existing note templates, tags, and linking conventions."
-        ]
+          "使用 AgentRules，根据当前项目结构和实际需求，生成适用的 AGENTS.md。",
+          "使用 AgentRules，保留已有有效约束，合并更新当前项目的 AGENTS.md。",
+          "Use AgentRules to create or update this project's AGENTS.md, preserving valid existing instructions."
+        ],
+        "websiteURL": "https://github.com/QuantumHW/AgentRules"
       }
     }
   }
