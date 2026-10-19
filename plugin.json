@@ -22,7 +22,7 @@
         "shortDescription": "为当前项目生成和完善 AGENTS.md",
         "developerName": "QuantumHW",
         "category": "Productivity",
-        "logo": "./assets/logo.png",
+        "logo": "./assets/icon.png",
         "defaultPrompt": [
           "使用 AgentRules，为当前项目生成 AGENTS.md。",
           "使用 AgentRules，保留有效约束并合并更新当前项目的 AGENTS.md。"
