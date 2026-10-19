@@ -11,13 +11,19 @@ description: 根据当前项目文件与用户目标选择 AgentRules 的 Rules 
 
 先区分两个位置：**目标项目**是用户指定的目录，否则为调用时工作目录；**规则库**来自本 Skill 的真实安装位置。不得把目标项目当成规则库，也不得把规则库根目录的 `AGENTS.md` 当作其他项目的现有约束或生成模板。
 
-根据加载本 Skill 时提供的 `SKILL.md` 路径定位其目录；若经软链接安装，先解析为真实路径（可在该 Skill 目录执行 `pwd -P`，或用可用的路径解析工具）。从真实的 `skills/generate-agents/` 向上两级得到规则库根目录。所有下列相对链接均以真实的 Skill 目录为基准：
+根据加载本 Skill 时提供的 `SKILL.md` 路径定位其目录；若经软链接安装，先解析为真实路径（可在该 Skill 目录执行 `pwd -P`，或用可用的路径解析工具）。本 Skill 目录中的 `references/` 包含完整规则资源，不依赖仓库根目录或其他安装。所有下列相对链接均以真实的 Skill 目录为基准：
 
-- [共同判断原则](../../rules/core.md)：必读，裁决冲突。
-- [Profiles 目录](../../profiles/)：先列出 `*.md` 并读标题和适用信号，再按证据读取匹配项全文，包括后来新增的 Profile。
-- [Rules 目录](../../rules/)：读取匹配 Profile 引用的规则；无匹配 Profile 时，从 core、factual-integrity、scope-control 中选取有用条款，涉及正式成品与命名时同时读取 [current-deliverable](../../rules/current-deliverable.md)。
+- [共同判断原则](references/rules/core.md)：必读，裁决冲突。
+- [Profiles 目录](references/profiles/)：先列出 `*.md` 并读标题和适用信号，再按证据读取匹配项全文，包括后来新增的 Profile。
+- [Rules 目录](references/rules/)：读取匹配 Profile 引用的规则；无匹配 Profile 时，从 core、factual-integrity、scope-control 中选取有用条款，涉及正式成品与命名时同时读取 [current-deliverable](references/rules/current-deliverable.md)。
 
-如任一必要资源不可读，报告具体路径及缺失项，停止依赖它的生成；不要下载未知副本、猜测规则内容或从演示文件代替读取。保留完整仓库并修复软链接即可恢复资源访问。
+如任一必要资源不可读，报告具体路径及缺失项，停止依赖它的生成；不要下载未知副本、猜测规则内容或从演示文件代替读取。检查是否完整安装了 Skill 目录及其 `references/`；资源缺失时通过原安装渠道修复。
+
+## 内置资源与用户需求
+
+Skill、Rules 和 Profiles 是由 AgentRules 维护者统一维护的内置资源。普通调用时只读使用，不因用户补充生成需求而修改安装包。将用户在交互中补充的要求与项目证据结合，体现在目标项目的 `AGENTS.md` 中；定制结果仍须遵守事实真实性、安全要求和已确认的项目契约。
+
+更新安装包不自动改写任何项目的 `AGENTS.md`；只有用户明确要求更新目标文件时才合并。仅在用户明确要求维护 AgentRules 源仓库或其 Fork 时，才进入规则库维护；不得把普通定制解释为内置资源编辑授权。
 
 ## 1. 发现项目与授权边界
 
@@ -33,12 +39,12 @@ description: 根据当前项目文件与用户目标选择 AgentRules 的 Rules 
 
 ## 2. 匹配场景与选择条款
 
-- 从 Profiles 的适用信号选择零个、一个或多个场景。内置场景为 [software](../../profiles/software.md)、[documentation](../../profiles/documentation.md)、[academic](../../profiles/academic.md)、[proposal](../../profiles/proposal.md) 和 [knowledge-base](../../profiles/knowledge-base.md)。新增 Profile 使用同一发现方式，无需修改本流程。
+- 从 Profiles 的适用信号选择零个、一个或多个场景。内置场景为 [software](references/profiles/software.md)、[documentation](references/profiles/documentation.md)、[academic](references/profiles/academic.md)、[proposal](references/profiles/proposal.md) 和 [knowledge-base](references/profiles/knowledge-base.md)。新增 Profile 使用同一发现方式，无需修改本流程。
 - 用户明确指定的项目类型优先；它可以证明工作目标，不能证明尚未存在的技术栈、命令或成果。混合项目按目录/产物明确各场景的作用范围，保留已确认的重要项目约束。
 - 读取所选 Profile 的规则链接，逐条按“适用行为—项目依据—例外”筛选。不选与任务无关的条款，不因文件后缀就启用整个 Profile。
-- 固定模板及版面任务按所选 Profile 发现 [template-preservation](../../rules/template-preservation.md)；研究数据、对照或机制论证按需发现 [research-validation](../../rules/research-validation.md)。申报类按实际模板选择栏目职责和对应关系，不套用其他申请书的章节形式、固定指标或进度措辞。
+- 固定模板及版面任务按所选 Profile 发现 [template-preservation](references/rules/template-preservation.md)；研究数据、对照或机制论证按需发现 [research-validation](references/rules/research-validation.md)。申报类按实际模板选择栏目职责和对应关系，不套用其他申请书的章节形式、固定指标或进度措辞。
 - 按行为主题合并语义重复。将场景细化写入同一条，不叠加两套近义表述。按 core 的原则消除冲突；未能安全裁决的实质冲突交由用户决定，不静默丢弃任何重要旧规则。
-- 涉及成品、标题、文件名、界面或正文的创建与修改时，选择“成品只表达当前主线”的实质约束，不仅写成“语言简洁”。版本与进度规则按项目流程选择，版本化产品参考 [version-management](../../rules/version-management.md)；规则库、Skill 或文档资源包也可适用，不以源码存在为条件，不按对话次数、功能大小或提交次数自动递增。版本同步权限取自目标项目，不把 AgentRules 自身的持续授权复制给其他项目。
+- 涉及成品、标题、文件名、界面或正文的创建与修改时，选择“成品只表达当前主线”的实质约束，不仅写成“语言简洁”。版本与进度规则按项目流程选择，版本化产品参考 [version-management](references/rules/version-management.md)；规则库、Skill 或文档资源包也可适用，不以源码存在为条件，不按对话次数、功能大小或提交次数自动递增。版本同步权限取自目标项目，不把 AgentRules 自身的持续授权复制给其他项目。
 - 已确认由有效用户级或上级规范覆盖的通用条款，可在目标文件中省略重复部分；不能假定用户一定有全局规范。未确认继承时，保留足以独立使用的事实、范围和验证底线。
 - 信息不足时，仅写目标已知的工作边界、真实性和验证原则；不填入猜测的架构、目录、测试命令、交付指标，也不为凑齐章节增加待定事项。只有关键缺口会改变输出时才请求补充。
 

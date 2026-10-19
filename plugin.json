@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agentrules",
+  "version": "1.2.0",
+  "description": "Project-aware AGENTS.md scaffolding with reusable rules and profiles.",
+  "author": {
+    "name": "QuantumHW",
+    "url": "https://github.com/QuantumHW"
+  },
+  "homepage": "https://github.com/QuantumHW/AgentRules",
+  "repository": "https://github.com/QuantumHW/AgentRules",
+  "license": "MIT",
+  "keywords": [
+    "agents-md",
+    "scaffolding",
+    "skills"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "AgentRules",
+        "shortDescription": "为当前项目生成和完善 AGENTS.md",
+        "developerName": "QuantumHW",
+        "category": "Productivity",
+        "logo": "./assets/logo.png",
+        "defaultPrompt": [
+          "使用 AgentRules，为当前项目生成 AGENTS.md。",
+          "使用 AgentRules，保留有效约束并合并更新当前项目的 AGENTS.md。"
+        ]
+      }
+    }
+  }
+}

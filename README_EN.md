@@ -6,41 +6,73 @@
   <p>Reusable Rules. Project-Specific Instructions.</p>
 
   <p>
-    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.1.0-1677FF?style=flat-square" alt="Version 1.1.0"></a>
+    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.2.0-1677FF?style=flat-square" alt="Version 1.2.0"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="MIT License"></a>
   </p>
-  <p><a href="#quick-start">Quick Start</a> · <a href="#use-cases">Use Cases</a> · <a href="#how-it-works">How It Works</a> · <a href="#customize">Refine Rules</a></p>
+  <p><a href="#quick-start">Quick Start</a> · <a href="#use-cases">Use Cases</a> · <a href="#how-it-works">How It Works</a> · <a href="#customize">Customize and Update</a></p>
 </div>
 
 ---
 
 AgentRules combines reusable behavior rules with your project's existing materials and requirements to generate a ready-to-use `AGENTS.md`. It covers software development, documentation, academic papers, project proposals, and personal knowledge bases.
 
-**Turn recurring requests into project instructions, instead of rewriting the same prompts for every task.**
+**A lightweight `AGENTS.md` scaffold for project instructions you can continue to refine.**
 
 <a id="quick-start"></a>
 
 ## Quick Start
 
-### 1 · Ask your agent to install
+### 1 · Choose an installation method
 
-In an agent session with network access and local file permissions, copy and send:
+Both methods use the same `generate-agents` Skill and official built-in rules. Choose one.
+
+**Option A: Standalone Skill**
+
+Send this to an agent with network access and local file permissions:
 
 ```text
-Install AgentRules for this agent:
-https://github.com/QuantumHW/AgentRules
-
-Keep the complete repository in a persistent local directory.
-Preserve the relative layout of skills/generate-agents, rules/, and profiles/.
-Do not copy only SKILL.md or overwrite an existing installation.
-
-If Agent Skills are supported, register generate-agents using this tool's mechanism.
-Otherwise, provide the local SKILL.md path and how to invoke it by reading it directly.
-Check that the entry point and rule resources are readable.
-Report the installation location and actual check results.
+Install generate-agents from https://github.com/QuantumHW/AgentRules
+using Skills CLI at user scope for this agent.
+Include the complete Skill directory and references/ resources; do not edit built-in rules.
+If an installation already exists, report its status before overwriting it.
+Check that the entry point, Rules, and Profiles are readable.
+Report the install location and actual results.
 ```
 
-The agent handles downloading, configuration, and checks; you do not need to run commands manually. Keep the complete repository in place so resource references remain valid.
+<details>
+<summary>Manual command (requires Node.js / npx)</summary>
+
+```sh
+npx skills add QuantumHW/AgentRules --skill generate-agents -g
+```
+
+Select your agent when prompted. Add `-a codex` to target Codex only. See [Skills CLI](https://github.com/vercel-labs/skills) for options and updates.
+
+</details>
+
+**Option B: Codex plugin**
+
+Send this to Codex:
+
+```text
+Add the plugin marketplace from QuantumHW/AgentRules,
+then install agentrules from agentrules-marketplace.
+Check its generate-agents Skill and references/ resources, and report the actual result.
+```
+
+<details>
+<summary>Commands for Codex CLI with plugin support</summary>
+
+```sh
+codex plugin marketplace add QuantumHW/AgentRules
+codex plugin add agentrules@agentrules-marketplace
+```
+
+On supported clients, you can also select the AgentRules marketplace in the plugin directory and install the plugin. Start a new session afterward; discovery depends on the client. See [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins).
+
+</details>
+
+This repository provides the Skill package, plugin manifest, and repository marketplace entry. These commands install the version available on GitHub. A repository marketplace does not mean the plugin is listed in the public directory.
 
 ### 2 · Generate instructions in your project
 
@@ -65,15 +97,15 @@ Simplify those constraints while keeping necessary correctness and security rule
 > **Already have AGENTS.md?** A generation request produces a candidate or diff without overwriting it. Explicit update requests authorize merging; substantive conflicts that cannot be resolved safely require your decision.
 
 <details>
-<summary>Codex installation and invocation example</summary>
+<summary>Explicit Skill invocation</summary>
 
-Codex can discover a symlink from `~/.agents/skills/generate-agents` to the repository's `skills/generate-agents` directory. It also supports explicit invocation:
+For a standalone Skill in Codex:
 
 ```text
 $generate-agents Generate AGENTS.md for this project based on its existing materials.
 ```
 
-See the [official OpenAI Skill documentation](https://learn.chatgpt.com/docs/build-skills) for loading details. Other agents use their own mechanisms. Without automatic Skill discovery, include the local `SKILL.md` path returned during installation and ask the agent to read and follow it.
+After plugin installation, choose AgentRules' `generate-agents` in the client's Skill picker. If automatic discovery is unavailable, ask the agent to read the installed `SKILL.md` path. Keep the entire Skill directory, not just its entry file.
 
 </details>
 
@@ -139,35 +171,20 @@ The output guides later work; generating it does not itself develop software, ed
 
 <a id="customize"></a>
 
-## Refine Your Rules
+## Customize and Update
 
-**For requirements specific to one project**, ask your agent to update that project's `AGENTS.md`.
-
-**For preferences you want to reuse**, open your local AgentRules repository and ask:
+Maintainers manage the official Skill, Rules, and Profiles. Installed resources are read-only during ordinary use. Add your requirements when invoking AgentRules; the agent applies them to your project's `AGENTS.md`:
 
 ```text
-Refine the general documentation rules:
-When editing an existing document, preserve its structure and writing style.
-Do not restructure the whole document unless the user explicitly requests it.
-Check existing rules first and decide whether to merge, revise, or add a rule.
-Maintain relevant Profile references and avoid duplication.
+Use AgentRules to generate AGENTS.md for this documentation project.
+Preserve the structure and writing style of existing documents.
+Do not restructure an entire document unless I explicitly request it.
+Apply these requirements to this project without editing AgentRules' built-in resources.
 ```
 
-This changes your local rule library. It does not publish upstream or update existing project instructions automatically. To apply new rules, explicitly request a merged update to the target project's `AGENTS.md`.
+For an existing file, explicitly request a merged update that preserves handwritten rules and valid constraints. Earlier project instructions can serve as reference material; their paths, organizations, metrics, and tools do not automatically apply to this project.
 
-You can also supply instructions from an earlier project as source material:
-
-```text
-Read this earlier project's AGENTS.md and integrate reusable requirements into AgentRules.
-Compare existing Rules and Profiles, merge overlapping content, and maintain references.
-Separate general behaviors, template requirements, and project-specific choices.
-Do not turn its section numbers, organizations, metric values, duration, or paths
-into universal constraints.
-```
-
-Proposal work can select [template and layout preservation](rules/template-preservation.md) and [research validation](rules/research-validation.md) as needed, with the [proposal Profile](profiles/proposal.md) organizing section responsibilities and delivery checks.
-
-**This project's version** is defined in `VERSION`. Rules, Profiles, and Skills are product content: corrections that preserve existing usage increment PATCH; new rules, contexts, or generation capabilities increment MINOR; changes that break existing usage require a MAJOR assessment. Product maintenance includes synchronizing the version and both README badges. Continued work toward the same target version does not increment it again; auxiliary explanations and formatting alone do not trigger an increment. Updating a version and publishing it are separate actions.
+Update AgentRules through your chosen installation channel. Skill users can run `npx skills check` first; `npx skills update` updates installed Skills, so review its scope before running it. Plugin users update through the client's plugin update mechanism. Package updates leave existing project `AGENTS.md` files intact. Explicitly request a merged update when you want to apply new rules.
 
 ## Usage Notes
 
