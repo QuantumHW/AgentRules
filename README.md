@@ -6,7 +6,7 @@
   <p>Reusable Rules. Project-Specific Instructions.</p>
 
   <p>
-    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.2.0-1677FF?style=flat-square" alt="Version 1.2.0"></a>
+    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.3.0-1677FF?style=flat-square" alt="Version 1.3.0"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="MIT License"></a>
   </p>
   <p><a href="#quick-start">快速开始</a> · <a href="#use-cases">适用场景</a> · <a href="#how-it-works">工作方式</a> · <a href="#customize">定制与更新</a></p>
