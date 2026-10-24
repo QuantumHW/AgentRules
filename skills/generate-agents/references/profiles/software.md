@@ -1,6 +1,6 @@
 # software：软件开发
 
-适用信号：存在源码、构建或依赖配置，且任务涉及实现、调试、测试或维护。仅有一段代码示例不足以认定整个项目是软件项目。
+适用信号：用户明确要求开发软件，需求或设计文档明确描述软件实现目标，或已有源码、构建或依赖配置且任务涉及实现、调试、测试或维护。只有需求文档、尚无工程文件的新项目同样适用。仅有一段代码示例或要求润色技术文档，不足以认定任务是软件开发。
 
 ## 引用规则
 
@@ -8,9 +8,25 @@
 - 开发：[anti-overengineering](../rules/anti-overengineering.md)、[error-handling](../rules/error-handling.md)、[technical-accuracy](../rules/technical-accuracy.md)。
 - 正式产物与命名：[current-deliverable](../rules/current-deliverable.md)。
 - 有界面、错误提示、帮助或开发文档任务时，补选 [concise-writing](../rules/concise-writing.md)。
-- 涉及产品版本时选择 [version-management](../rules/version-management.md)；已有进度、Git 或交付流程时按需选择 [change-traceability](../rules/change-traceability.md)。
+- 开发协作基线：[change-traceability](../rules/change-traceability.md)、[version-management](../rules/version-management.md)。没有既有流程时也读取其基础条款，具体策略按项目约定或用户选择落实。
 
 引用是候选集合；按目标项目中实际存在的行为选择条款，不把各文件全文拼接。
+
+## 通用开发基线
+
+生成结果须覆盖下列行为主题；可以合并组织，不要求固定章节。适用的基础约束直接写入；策略性选择按 Skill 流程询问用户。不得要求需求文档先写过这些规则才选用。
+
+| 主题 | 必须落实的基础约束 | 规则来源 |
+| --- | --- | --- |
+| 真实性与范围 | 核对事实和契约，保护用户改动，仅完成当前目标与必要关联修改 | core、factual-integrity、scope-control |
+| 设计与依赖 | 沿用有效结构，避免假设需求、重复抽象和无关依赖升级 | anti-overengineering |
+| 错误、安全与资源 | 在真实边界校验和处理失败，保护凭据及敏感数据，执行必要资源清理 | error-handling、scope-control |
+| 验证与交付 | 按风险验证受影响行为，不编造命令与结果，交付明确未验证项 | technical-accuracy、change-traceability |
+| Git 工作边界 | 有仓库时核对状态与差异，保护既有修改，按授权执行写操作与远程操作 | change-traceability |
+| 进度与跨会话交接 | 有记录先读，交付说明完成项、验证、未完成项和下一步；需要持久记忆时确认载体 | change-traceability |
+| 版本管理 | 核对既有版本策略与来源，区分目标和已发布版本；策略不明时提出选择 | version-management |
+
+Conventional Commits、分支命名、固定进度/记忆文件、SemVer、版本起点与自动版本同步权限属于可选策略，不是既有项目事实。没有仓库时 Git 约束写成条件性规则，不自动初始化；单次脚本或原型可以不建立持久记录与发布体系，但仍保留真实交付及已有版本核对要求。
 
 ## 场景补充
 

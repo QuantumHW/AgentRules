@@ -6,7 +6,7 @@
   <p>Reusable Rules. Project-Specific Instructions.</p>
 
   <p>
-    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.3.0-1677FF?style=flat-square" alt="Version 1.3.0"></a>
+    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.4.0-1677FF?style=flat-square" alt="Version 1.4.0"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="MIT License"></a>
   </p>
   <p><a href="#quick-start">Quick Start</a> · <a href="#use-cases">Use Cases</a> · <a href="#how-it-works">How It Works</a> · <a href="#customize">Customize and Update</a></p>
@@ -83,7 +83,13 @@ Use AgentRules to analyze this project
 and generate a suitable AGENTS.md.
 ```
 
-Review the project facts, scope, and verification requirements before using the file for subsequent tasks. With limited information, the workflow produces supported baseline instructions rather than inventing a technology stack or commands.
+Review the project facts, scope, and verification requirements before using the file for subsequent tasks. New software projects with only requirements or a technical design document also receive general development constraints. Unknown stacks, directories, and commands are not invented.
+
+Alongside a concise project summary, software instructions cover scope, design and dependencies, error handling and security, verification and delivery, Git boundaries, progress handoffs, and version checks. When no policy exists, the agent completes the baseline first, then asks about useful optional policies, for example:
+
+> General development constraints are in place. Would you also like: (1) Conventional Commits and suggested commit messages at handoff; (2) persistent progress, key decisions, and next steps in a file you choose; (3) SemVer and permission to synchronize versions when delivering features? Choose individually or use your own approach.
+
+Confirmed or declined choices are not asked again. Unselected policies stay outside the final file. Generating instructions does not initialize Git, create progress or memory files, set version fields, or make commits.
 
 ### 3 · Refine in natural language
 
@@ -115,7 +121,7 @@ After plugin installation, choose AgentRules' `generate-agents` in the client's 
 
 | Your work | Main focus |
 | --- | --- |
-| **Software development** | Appropriate design, error handling, scope control, code verification |
+| **Software development, including requirements-only projects** | General development baseline, project contracts, Git boundaries, progress handoffs, version checks, and optional policies |
 | **General documentation** | Accurate content, concise writing, consistent structure and terminology |
 | **Academic papers** | Verifiable references, authentic experimental data, supported conclusions |
 | **Project proposals** | Template and layout preservation, source verification, aligned tasks, metrics, and outcomes |
@@ -150,15 +156,15 @@ Knowledge-base fields, heading levels, and paths come from actual project conven
 
 </details>
 
-Example outputs: [software project](examples/software/AGENTS.md) · [project proposal](examples/proposal/AGENTS.md) · [personal knowledge base](examples/knowledge-base/AGENTS.md). These use fictional demonstration settings, not your project's configuration.
+Example outputs: [software project](examples/software/AGENTS.md) · [requirements-only software project](examples/software-greenfield/AGENTS.md) · [project proposal](examples/proposal/AGENTS.md) · [personal knowledge base](examples/knowledge-base/AGENTS.md). These use fictional demonstration settings, not your project's configuration.
 
 <a id="how-it-works"></a>
 
 ## How It Works
 
 1. **Analyze the project**: Read relevant descriptions, configuration, existing instructions, and task materials to establish the actual context.
-2. **Combine rules**: Select behavior Rules and context Profiles, resolving duplication, conflicts, and irrelevant constraints.
-3. **Generate instructions**: The `generate-agents` Skill organizes a project-specific `AGENTS.md` and checks facts, scope, and consistency.
+2. **Combine rules**: Select both a general baseline and project-specific requirements from behavior Rules and context Profiles, resolving duplication, conflicts, and irrelevant constraints.
+3. **Generate and offer choices**: The `generate-agents` Skill organizes a project-specific `AGENTS.md`, checks coverage and facts, and asks the user to choose useful policies that remain undecided.
 
 The instructions address recurring problems:
 

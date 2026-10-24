@@ -6,7 +6,7 @@
   <p>Reusable Rules. Project-Specific Instructions.</p>
 
   <p>
-    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.3.0-1677FF?style=flat-square" alt="Version 1.3.0"></a>
+    <a href="VERSION"><img src="https://img.shields.io/badge/version-1.4.0-1677FF?style=flat-square" alt="Version 1.4.0"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E?style=flat-square" alt="MIT License"></a>
   </p>
   <p><a href="#quick-start">快速开始</a> · <a href="#use-cases">适用场景</a> · <a href="#how-it-works">工作方式</a> · <a href="#customize">定制与更新</a></p>
@@ -82,7 +82,13 @@ codex plugin add agentrules@agentrules-marketplace
 并为我生成一份适用的 AGENTS.md。
 ```
 
-审阅生成文件中的项目事实、工作范围和验证要求，即可用于后续任务。信息不足时，只生成有依据的基础约束，不补造技术栈或命令。
+审阅生成文件中的项目事实、工作范围和验证要求，即可用于后续任务。只有需求或技术设计文档、还没有源码的新软件项目，也会纳入通用开发约束；未知的技术栈、目录和命令不补造。
+
+软件规范除必要的项目摘要外，还覆盖范围控制、设计与依赖、错误与安全、验证交付、Git 工作边界、进度交接和版本核对。没有既有约定时，Agent 先完成基础内容，再就适用的可选策略询问你，例如：
+
+> 已写入通用开发约束。是否还要加入：①Conventional Commits 与交付时的提交建议；②在你指定的文件中持续记录进度、关键决策和下一步；③SemVer 版本管理与功能交付时同步版本的授权？可分别选择，也可沿用自己的方式。
+
+已确认或拒绝的选择不反复询问。尚未选择的策略不写入正式文件；生成规范本身不会初始化 Git、创建进度/记忆文件、设置版本字段或执行提交。
 
 ### 3 · 继续用自然语言调整
 
@@ -114,7 +120,7 @@ $generate-agents 为当前项目生成 AGENTS.md，以现有资料为依据。
 
 | 你在做什么 | 规范重点 |
 | --- | --- |
-| **软件开发** | 设计适度、异常处理、修改范围、代码验证 |
+| **软件开发（含只有需求文档的新项目）** | 通用开发基线、项目契约、Git 边界、进度交接、版本核对与可选策略 |
 | **通用文档** | 内容准确、表达精练、结构与术语一致 |
 | **科研论文** | 引用可核验、实验数据真实、结论有依据 |
 | **项目申报书** | 模板与版面保护、来源核验、任务—指标—成果对应 |
@@ -149,15 +155,15 @@ $generate-agents 为当前项目生成 AGENTS.md，以现有资料为依据。
 
 </details>
 
-参考生成结果：[软件项目](examples/software/AGENTS.md) · [项目申报书](examples/proposal/AGENTS.md) · [个人知识库](examples/knowledge-base/AGENTS.md)。这些示例采用虚构演示背景，不代表你的项目配置。
+参考生成结果：[软件项目](examples/software/AGENTS.md) · [只有需求文档的新软件项目](examples/software-greenfield/AGENTS.md) · [项目申报书](examples/proposal/AGENTS.md) · [个人知识库](examples/knowledge-base/AGENTS.md)。这些示例采用虚构演示背景，不代表你的项目配置。
 
 <a id="how-it-works"></a>
 
 ## 工作方式
 
 1. **分析项目**：读取相关说明、配置、现有指令和任务材料，确认实际上下文。
-2. **组合规则**：从行为规则（Rules）与场景配置（Profiles）中筛选内容，处理重复、冲突和不适用条款。
-3. **生成规范**：由 `generate-agents` Skill 组织为项目专属 `AGENTS.md`，核查事实、范围和一致性。
+2. **组合规则**：从行为规则（Rules）与场景配置（Profiles）中同时选择通用基线和项目专项要求，处理重复、冲突和不适用条款。
+3. **生成并补充选择**：由 `generate-agents` Skill 组织为项目专属 `AGENTS.md`，核查覆盖与事实；对尚未确定且适用的策略给出具体选项，由用户决定。
 
 规范重点约束这些反复出现的问题：
 
